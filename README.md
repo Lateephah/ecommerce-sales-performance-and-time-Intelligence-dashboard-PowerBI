@@ -1,6 +1,80 @@
 # ecommerce-sales-performance-and-time-Intelligence-dashboard-PowerBI
 This project presents an interactive Power BI dashboard designed to analyze and monitor e-commerce sales performance across products, regions, and time.  The dashboard leverages advanced data modeling and time intelligence techniques to provide actionable insights into business performance.
 
+## 🧱 Data Modeling
+
+A structured data modeling approach was implemented to ensure efficient analysis and accurate reporting within the dashboard.
+
+### ⭐ Star Schema Design
+
+The model follows a **star schema architecture**, consisting of:
+
+* **Fact Table**
+
+  * Contains transactional data:
+
+    * Sales
+    * Quantity
+    * Profit
+    * Order Date
+
+* **Dimension Tables**
+
+  * **Date Dimension (`Dim_Date`)**
+
+    * Custom-built using a calendar table
+    * Enables time intelligence calculations (YTD, PYTD)
+  * Additional dimensions:
+
+    * Product Name
+    * Product Category
+    * Region
+
+This structure allows for efficient filtering, aggregation, and scalability.
+
+![Data Model](images/Data_Model.png)
+
+
+### 🔗 Relationships
+
+* A **one-to-many relationship** exists between:
+
+  * `Dim_Date[Date]` → `FACT_Table[Order Date]`
+
+* Dimension tables filter the fact table, enabling:
+
+  * Accurate slicing by time, region, and category
+  * Seamless drill-down across visuals
+
+### ⏳ Time Intelligence Support
+
+The custom Date table plays a critical role in enabling time-based analysis:
+
+* Supports:
+
+  * Year-to-Date (YTD)
+  * Previous Year-to-Date (PYTD)
+* Ensures proper alignment of time periods for meaningful comparisons
+
+
+### ⚙️ Design Considerations
+
+* Measures were used instead of calculated columns for flexibility and performance
+* Dynamic measure switching was implemented using a dedicated slicer table
+* The model was optimized to avoid unnecessary dependencies and ensure consistent calculations across visuals
+
+
+### 💡 Outcome
+
+This data model enables:
+
+* Fast and efficient query performance
+* Accurate time-based comparisons
+* Scalable and maintainable dashboard design
+
+👉 Overall, the model provides a strong foundation for advanced analytics and interactive reporting.
+
+
 ## 📊 Dashboard Analysis & Key Insights
 
 This dashboard provides an interactive analysis of e-commerce performance using Year-to-Date (YTD) and Previous Year-to-Date (PYTD) comparisons across products, regions, and time.
